@@ -1,0 +1,42 @@
+- module: apt
+  params:
+    name: nginx
+    state: present
+
+- module: apt
+  params:
+    name: nginx-common
+    state: present
+
+- module: copy
+  params:
+    src: ./public
+    dest: /home/nux/
+    backup: true
+
+- module: template
+  params:
+    src: default.conf.j2
+    dest: /etc/nginx/sites-enabled/default
+
+- module: service
+  params:
+    name: nginx
+    state: start
+
+- module: service
+  params:
+    name: nginx
+    state: enable
+
+- module: sysctl
+  params:
+     attribute: "net.core.somaxconn"
+     value: 2000
+     permanent: false
+
+- module: command
+  params:
+     command: |
+       echo "test MyLittleAnsible" > /tmp/test-file
+       cat /tmp/test-file

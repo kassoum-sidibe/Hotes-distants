@@ -1,0 +1,7 @@
+hosts:
+  debian:
+    ssh_address: 192.168.174.132
+    ssh_port: 22
+    ssh_user: nux
+    ssh_password: test
+    ssh_key_file: C:\\Users\\kasso\\OneDrive\\Documents\\ETNA\\NUX\\keys\\id_rsa
